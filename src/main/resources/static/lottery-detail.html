@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <!-- content这个初始化缩放比例影响了移动设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>彩票详情</title>
+    <!-- 没rel="stylesheet" 居然没引用,学习了 -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/lottery-basic.css">
+
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="container-fluid">
+
+    <!-- 1.标题 -->
+    <div class="row title">
+        <div class="col-xs-12">
+            <div style="position: absolute;" onclick="history.back()">&lt;返回</div>
+            彩票详情
+        </div>
+    </div>
+    <div style="margin-top: 55px;"></div>
+    <!-- 1.标题结束 -->
+
+    <!-- 2.轮播图 -->
+    <div class="carousel slide" style="width: 360px;margin-left: -15px"
+         id="mycarousel"
+         data-ride="carousel"
+         data-interval="2000">
+        <!--
+            指示器,下面的三个小点
+
+            data-slide-to="0"  点击小点的时候切换到那一张图片
+        -->
+        <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#mycarousel"></li>
+            <li data-slide-to="1" data-target="#mycarousel"></li>
+            <li data-slide-to="2" data-target="#mycarousel"></li>
+        </ol>
+        <!--
+            真实的轮播图
+        -->
+        <div class="carousel-inner">
+            <div class="item active" style="background-color: #2D0097;">
+                <img src="img/001.jpg" style="margin: 0 auto;"/>
+            </div>
+            <div class="item" style="background-color: #00011F;">
+                <img src="img/002.jpg" style="margin: 0 auto;"/>
+            </div>
+            <div class="item" style="background-color: #000F1C;">
+                <img src="img/003.jpg" style="margin: 0 auto;"/>
+            </div>
+        </div>
+        <!--
+        左右两侧的按钮
+        固定格式,不变
+         -->
+        <a class="left carousel-control" href="#mycarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#mycarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <!-- 2.轮播图结束 -->
+
+    <!-- 3.彩票期号 -->
+    <div class="row" style="padding: 20px">
+        <div class="pull-left">第2018019期</div>
+        <div class="pull-right">2018-02-06(二)</div>
+    </div>
+    <!-- 3.彩票期号结束 -->
+
+    <!-- 4.彩票选项 -->
+    <div style="padding-left: 2%;padding-right: 2%;">
+
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-red">1</span>
+        </div>
+        <div class="col-ball">
+            <span class="ball-item ball-item-blue">1</span>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- 4.彩票选项结束 -->
+
+    <!--5.奖池金额-->
+    <div style="margin-top: 16px;">
+        <table class="table table-bordered">
+            <tr style="background-color: gainsboro;">
+                <td class="text-center">本期销量</td>
+                <td class="text-center">奖池奖金</td>
+            </tr>
+            <tr>
+                <td class="text-center" style="color: red;">135,234,567</td>
+                <td class="text-center" style="color: red;">134,555,123</td>
+            </tr>
+        </table>
+    </div>
+
+    <!--6.中奖信息-->
+    <div>
+        <table class="table table-bordered">
+            <tr style="background-color: gainsboro;">
+                <td class="text-center">奖项</td>
+                <td class="text-center">中奖注数</td>
+                <td class="text-center">奖金</td>
+            </tr>
+            <tr>
+                <td class="text-center">一等奖</td>
+                <td class="text-center">4</td>
+                <td class="text-center" style="color: red;">5,000,000</td>
+            </tr>
+            <tr>
+                <td class="text-center">二等奖</td>
+                <td class="text-center">85</td>
+                <td class="text-center" style="color: red;">3,000,000</td>
+            </tr>
+            <tr>
+                <td class="text-center">三等奖</td>
+                <td class="text-center">100</td>
+                <td class="text-center">3000</td>
+            </tr>
+            <tr>
+                <td class="text-center">四等奖</td>
+                <td class="text-center">153</td>
+                <td class="text-center">200</td>
+            </tr>
+            <tr>
+                <td class="text-center">五等奖</td>
+                <td class="text-center">267</td>
+                <td class="text-center">10</td>
+            </tr>
+            <tr>
+                <td class="text-center">六等奖</td>
+                <td class="text-center">321</td>
+                <td class="text-center">5</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <!-- 5.底部菜单栏 -->
+    <div style="margin-bottom: 62px;"></div>
+    <div class="lottery-bottom">
+        <div class="col-xs-12">
+            <div class="col-xs-4">
+                <span class="glyphicon glyphicon-home bottom-item"></span>
+            </div>
+            <div class="col-xs-4">
+                <span class="glyphicon glyphicon-shopping-cart bottom-item"></span>
+            </div>
+            <div class="col-xs-4">
+                <span class="glyphicon glyphicon-user bottom-item"></span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-4">主页</div>
+            <div class="col-xs-4">选号</div>
+            <div class="col-xs-4">我的</div>
+        </div>
+
+    </div>
+    <!-- 5.底部菜单栏结束 -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    width: 360px;
+    height: 55px;
+    line-height: 55px;
+    top: 0;
+    position: fixed;
+    display: inline-block;
+    color: rgba(16, 16, 16, 1);
+    background-color: gainsboro;
+    font-size: 18px;
+    text-align: center;
+    z-index: 999;
+    font-family: Microsoft Yahei, serif;
+}
+
+.lottery-history-number {
+    left: 4px;
+    top: 269px;
+    width: 96px;
+    height: 41px;
+    line-height: 23px;
+    color: rgba(16, 16, 16, 1);
+    font-size: 16px;
+    text-align: center;
+    font-family: Roboto, serif;
+
+}
+
+.lottery-history-date {
+    left: 100px;
+    top: 279px;
+    width: 154px;
+    height: 21px;
+    line-height: 20px;
+    color: rgba(16, 16, 16, 1);
+    font-size: 14px;
+    text-align: center;
+    font-family: Roboto, serif;
+}
+
+.lottery-history-icon {
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.ball-items {
+    margin-top: 6px;
+}
+
+.ball-item {
+    width: 31px;
+    height: 31px;
+    line-height: 31px;
+    color: rgba(229, 28, 35, 1);
+    font-size: 14px;
+    text-align: center;
+    font-family: Roboto, serif;
+    border: 1px solid rgba(187, 187, 187, 1);
+    border-radius: 100%;
+    /* 画龙点睛 */
+    display: inline-block;
+}
+
+.ball-item-red {
+    color: red;
+}
+
+.ball-item-red-selected {
+    color: white;
+    font-weight: bold;
+    background-color: red;
+}
+
+.ball-item-blue {
+    color: blue;
+}
+
+.ball-item-blue-selected {
+    color: white;
+    font-weight: bold;
+    background-color: blue;
+}
+
+.lottery-history {
+    border-top: 1px solid #f2dede;
+}
+
+/* 固定底部样式 */
+.lottery-bottom {
+    /* position:fixed和bottom:0可以让div固定在底部 */
+    position: fixed;
+    bottom: 0;
+    left: 1px;
+    height: 55px;
+    width: 100%;
+    background-color: rgba(218, 218, 218, 1);
+    text-align: center;
+    box-shadow: 0 0 0 0 rgba(65, 64, 64, 1);
+}
+
+.lottery-bottom-text {
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+}
+
+/* 底部图标条目的大小控制 */
+.bottom-item {
+    font-size: 24px;
+}
+
+/* 选号界面球的样式 */
+.col-ball {
+    margin-top: 7px;
+    float: left;
+    width: 12.5%;
+    text-align: center;
+}
+
+/* 红字白字 */
+.font-black {
+    color: #000;
+}
+
+.font-red {
+    color: #F00;
+}
+
+.payType{
+    padding-right: 60px;
+    padding-top: 16px;
+    border-top: #2aabd2 1px solid;
+}
+
+.payType label{
+    display: block;
+}
