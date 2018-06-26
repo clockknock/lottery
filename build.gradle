@@ -53,7 +53,12 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compileOnly "org.springframework.boot:spring-boot-configuration-processor"
 
     compile 'mysql:mysql-connector-java:5.1.39'
     compile 'com.google.guava:guava:25.1-jre'
+
+	//阿里大于的依赖
+    compile group: 'com.aliyun', name: 'aliyun-java-sdk-core', version: '3.5.1'
+    compile('com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0')
 }

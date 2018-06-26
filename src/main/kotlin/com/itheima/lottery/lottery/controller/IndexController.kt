@@ -1,16 +1,15 @@
 package com.itheima.lottery.lottery.controller
 
-import com.google.common.io.BaseEncoding
 import com.itheima.lottery.lottery.bean.BallHistory
 import com.itheima.lottery.lottery.service.BallHistoryService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
-import sun.security.rsa.RSASignature
 
 /**
  * @author 钟未鸣
@@ -19,12 +18,14 @@ import sun.security.rsa.RSASignature
 @Controller
 class IndexController {
 
+
     @RequestMapping("/")
     fun index(model: Model): String {
         val page: Pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "code")
         val histories = historyService.findAll(page)
+        val content = histories.content
 
-        model.addAttribute("histories", histories.content)
+        model.addAttribute("histories", content)
 
         return "index"
     }

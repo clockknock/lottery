@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * @author 钟未鸣
@@ -14,6 +15,16 @@ import org.springframework.stereotype.Service
  */
 @Service
 class BallHistoryServiceImpl : BallHistoryService{
+    @Transactional
+    override fun save(ballHistory: BallHistory) {
+        historyRepository.save(ballHistory)
+    }
+
+    @Transactional
+    override fun saveAll(ballHistories: List<BallHistory>) {
+        historyRepository.saveAll(ballHistories)
+    }
+
     override fun findAll(): List<BallHistory> {
         return historyRepository.findAll()
     }

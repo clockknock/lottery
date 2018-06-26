@@ -1,0 +1,127 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <!-- content这个初始化缩放比例影响了移动设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人中心</title>
+    <!-- 没rel="stylesheet" 居然没引用,学习了 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/lottery-basic.css">
+
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/lottery-jump.js"></script>
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <!--标题栏页面-->
+    <div class="row title">
+        <div class="col-xs-12">
+            <div style="position: absolute;display: none;">&lt;返回</div>
+            个人中心
+        </div>
+    </div>
+    <div style="margin-top: 55px;"></div>
+
+    <!--用户信息栏-->
+    <div class="row">
+        <div class="col-xs-4">
+            <img src="/img/aq1z.png" th:src="${session.user.headimg}" onerror="src='/img/heima.png'"
+                 alt=""
+                 class="img-circle img-thumbnail"
+                 style="width:80px;height:80px"/>
+        </div>
+        <div class="col-xs-8" style="padding-top: 22px;padding-left: 5px;">
+            <p style="font-size: 16px;" th:text="${session.user.username}">凯骏</p>
+            <p style="font-size: 14px;" th:text="${session.user.mobile}">手机号:18688889999</p>
+        </div>
+    </div>
+
+    <!--水平分割线-->
+    <hr/>
+
+    <!--今日幸运中奖号码-->
+    <div class="row">
+        <div class="col-xs-12" style="color: red;margin-bottom: 9px;">
+            您今日幸运中奖号码为:
+        </div>
+
+        <div class="col-xs-12 text-center" style="height:49px;">
+            <ball th:each="red:${reds}">
+                <div class="ball-item ball-item-red" th:text="${red}">01</div>
+
+            </ball>
+
+            <div class="ball-item ball-item-blue" th:text="${blue}">15</div>
+        </div>
+
+        <div class="col-xs-offset-7 col-xs-2">
+            <button class="btn btn-default">购买立中大奖</button>
+        </div>
+    </div>
+
+    <!--水平分割线-->
+    <hr/>
+
+    <!--累计中奖次数-->
+    <div class="row">
+        <div class="col-xs-6">
+            累计中奖次数:<span style="color:red;font-size: 14px;">1024</span>
+        </div>
+        <div class="col-xs-6">
+            累计中奖金额:<span style="color:red">512万</span>
+        </div>
+    </div>
+    <!--水平分割线-->
+    <hr/>
+
+    <!--账户余额-->
+    <div class="row">
+        <div class="col-xs-12">
+            账户余额:<span style="color:red;font-size: 14px;" th:text="|${session.user.money}元|">1.00
+            元</span>
+        </div>
+    </div>
+    <!--水平分割线-->
+    <hr/>
+
+    <!--我的订单-->
+    <div class="row">
+        <div class="col-xs-12">
+            我的订单
+        </div>
+    </div>
+    <!--水平分割线-->
+    <hr/>
+
+    <!--基本信息-->
+    <div class="row">
+        <div class="col-xs-12">
+            基本信息
+        </div>
+    </div>
+    <!--水平分割线-->
+    <hr/>
+
+    <!--设置信息-->
+    <div class="row">
+        <div class="col-xs-12">
+            设置
+        </div>
+    </div>
+    <!--水平分割线-->
+    <hr/>
+
+    <!--主要是解决页面显示不完整-->
+    <div style="margin-bottom: 58px;"></div>
+
+    <!--5.底部菜单栏-->
+    <div th:replace="~{common/menu :: #menu_div}"></div>
+
+</div>
+</body>
+
+</html>

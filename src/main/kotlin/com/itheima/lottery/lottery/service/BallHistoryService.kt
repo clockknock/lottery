@@ -12,4 +12,7 @@ interface BallHistoryService {
     fun findAll():List<BallHistory>
     fun findAll(page:Pageable): Page<BallHistory>
     fun findOne(code:String): BallHistory?
+
+    fun save(ballHistory: BallHistory)
+    fun saveAll(ballHistories: List<BallHistory>)
 }

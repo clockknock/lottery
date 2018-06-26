@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <!-- content这个初始化缩放比例影响了移动设备 -->
@@ -12,15 +11,9 @@
     <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/lottery-jump.js"></script>
-
-
 </head>
-
-
 <body>
-
 <div class="container-fluid">
-
     <!-- 1.标题 -->
     <div class="row title">
         <div class="col-xs-12">
@@ -73,67 +66,37 @@
     </div>
     <!-- 2.轮播图结束 -->
 
-    <!-- 3.论坛入口 -->
-    <div class="row" style="padding-bottom: 10px;" onclick="location.href='/bbs/index'">
-        <div class="col-xs-12">
-            <p style="font-size: 20px;">博彩论坛</p>
-            <p style="font-size: 16px">论坛中最新的帖子...</p>
-        </div>
-    </div>
-    <!-- 3.论坛结束 -->
 
-    <!-- 4.彩票历史记录 -->
-    <div class="row lottery-history">
-
-        <!-- 历史号码 -->
-        <div class="col-xs-12" th:each="history:${histories}"
-             th:onclick="|lotteryDetail(${history.code})|">
-            <span class="lottery-history-number" th:text="|第${history.code}期|">
-                第2018016期
-            </span>
-            <span class="lottery-history-date" th:text="${history.date}">
-                2018-01-06 21:20:20
-            </span>
-            <div class="col-xs-10 ball-items">
-                <ball th:each="red : ${history.reds}">
-                    <span class="ball-item ball-item-red" th:text="${red}">13</span>
-                </ball>
-                <span class="ball-item ball-item-blue" th:text="${history.blue}">13</span>
-
+    <!-- 帖子列表 -->
+    <div class="row ball-div">
+        <div class="col-xs-11">
+            <div class="row">
+                <span style="font-size:14px">小凯凯</span>
+                <span style="font-size:12px;margin-left:4px">2018-01-06 21:20:20</span>
             </div>
-            <div class="col-xs-1 lottery-history-icon">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            </div>
-        </div>
-        <!-- 历史号码结束 -->
-
-
-    </div>
-    <!-- 4.彩票历史结束 -->
-
-    <!-- 5.底部菜单栏 -->
-    <div th:replace="~{common/menu :: #menu_div}"></div>
-    <!--
-    <div style="margin-bottom: 62px;"></div>
-    <div class="lottery-bottom">
-        <div class="col-xs-12">
-            <div class="col-xs-4">
-                <span class="glyphicon glyphicon-home bottom-item"></span><br/>
-                主页
-            </div>
-            <div class="col-xs-4" onclick="location.href='/select-number.html'">
-                <span class="glyphicon glyphicon-shopping-cart bottom-item"></span><br/>
-                选号
-            </div>
-            <div class="col-xs-4">
-                <span class="glyphicon glyphicon-user bottom-item"></span><br/>
-                我的
+            <div class="row" style="line-height: 20px;margin-bottom: 5px;
+            margin-top: 10px;word-break: break-all;">
+                我买的这注01,11,20,23,25,30...彩票,
             </div>
         </div>
     </div>
-   -->
-    <!-- 5.底部菜单栏结束 -->
+    <!-- 帖子列表结束 -->
+
+
+    <div style="margin-bottom: 200px;"></div>
+
+    <div class="row" style="position: fixed;bottom: 0;width: 100%;">
+
+        <form action="#" method="post">
+            <!--输入标题栏-->
+            <input type="text" name="title" class="form-control" placeholder="请输入标题..."/>
+            <!--输入框-->
+            <textarea class="form-control" name="content" style="height: 100px;"
+                      placeholder="请输入内容..."></textarea>
+            <!--确认发表的按钮-->
+            <button type="submit" class="form-control">发表</button>
+        </form>
+    </div>
 </div>
-
 </body>
 </html>
