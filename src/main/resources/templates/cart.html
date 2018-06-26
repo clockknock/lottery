@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!-- content这个初始化缩放比例影响了移动设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>博彩首页</title>
+    <!-- 没rel="stylesheet" 居然没引用,学习了 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/lottery-basic.css">
+
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/lottery-jump.js"></script>
+    <script type="text/javascript">
+        function remove(itemHash) {
+            location.href = "/cart/remove?itemHash=" + itemHash
+        }
+    </script>
+
+</head>
+
+
+<body>
+
+<div class="container-fluid">
+
+    <!-- 1.标题 -->
+    <div class="row title">
+        <div class="col-xs-12">
+            <div style="position: absolute;" onclick="jumpPage('/cart/select-numberUI')">&lt;返回
+            </div>
+            购彩车
+        </div>
+    </div>
+    <div style="margin-top: 55px;"></div>
+    <!-- 1.标题结束 -->
+
+    <!-- 2.轮播图 -->
+    <div class="carousel slide" style="width: 360px;margin-left: -15px"
+         id="mycarousel"
+         data-ride="carousel"
+         data-interval="2000">
+        <!--
+            指示器,下面的三个小点
+
+            data-slide-to="0"  点击小点的时候切换到那一张图片
+        -->
+        <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#mycarousel"></li>
+            <li data-slide-to="1" data-target="#mycarousel"></li>
+            <li data-slide-to="2" data-target="#mycarousel"></li>
+        </ol>
+        <!--
+            真实的轮播图
+        -->
+        <div class="carousel-inner">
+            <div class="item active" style="background-color: #2D0097;">
+                <img src="/img/001.jpg" style="margin: 0 auto;"/>
+            </div>
+            <div class="item" style="background-color: #00011F;">
+                <img src="/img/002.jpg" style="margin: 0 auto;"/>
+            </div>
+            <div class="item" style="background-color: #000F1C;">
+                <img src="/img/003.jpg" style="margin: 0 auto;"/>
+            </div>
+        </div>
+        <!--
+        左右两侧的按钮
+        固定格式,不变
+         -->
+        <a class="left carousel-control" href="#mycarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#mycarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <!-- 2.轮播图结束 -->
+
+    <!-- 3.彩票期号 -->
+    <div class="row" style="padding: 20px">
+        <div class="pull-left">第2018019期</div>
+        <div class="pull-right">
+            奖池
+            <span class="font-red">4亿1523万</span>
+            可开出
+            <span class="font-red">83注</span>
+            500万
+        </div>
+    </div>
+    <!-- 3.彩票期号结束 -->
+
+    <!-- 4.三个按钮 -->
+    <div class="row">
+        <div class="col-xs-4">
+            <button class="btn btn-default" onclick="jumpPage('/cart/select-numberUI')">+手动选号
+            </button>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-default"
+                    onclick="jumpPage('/cart/select-numberUI?randomOneFlag=true')">+机选一注
+            </button>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-default" onclick="jumpPage('/cart/clear')">清空列表</button>
+        </div>
+    </div>
+    <!-- 4.三个按钮结束 -->
+
+    <!-- 5.已选球 -->
+
+    <!-- 单个选球 -->
+    <div class="row selected-ball-row" th:each="item:${session.cart.getCartItems()}"
+         style="border-top: 1px solid #f5e79e;margin-top:10px;">
+        <div class="col-xs-1" th:onclick="|remove('${item.hashCode()}')|">
+            <span class="glyphicon glyphicon-remove" style="padding-top: 14px;"></span>
+        </div>
+        <div class="col-xs-10">
+            <red th:each="red:${item.reds}">
+                <div class="col-ball">
+                    <span class="ball-item ball-item-red" th:text="${red}">1</span>
+                </div>
+
+            </red>
+            <div class="col-ball">
+                <span class="ball-item ball-item-blue" th:text="${item.blue}">1</span>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div style="padding-top: 10px;" th:class="col-xs-10"
+             th:text="|${item.count} 注 , 共计 ${item.subTotal} 元|">100
+            元</div>
+        <div class="col-xs-1">
+            <span class="glyphicon glyphicon-chevron-right" style="padding-top: 14px;"></span>
+        </div>
+    </div>
+
+
+    <!-- 5.已选球结束-->
+
+
+    <!-- 5.底部菜单栏 -->
+    <div style="margin-bottom: 62px;"></div>
+    <div class="lottery-bottom">
+        <div class="col-xs-12 lottery-bottom-text"
+             th:text="|立即付款 : ${session.cart.getTotalPrice()} 元|">
+            立即付款 : 8元
+        </div>
+    </div>
+    <!-- 5.底部菜单栏结束 -->
+</div>
+
+</body>
+</html>

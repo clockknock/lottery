@@ -15,7 +15,7 @@ class Cart {
     fun add(cartItem: CartItem) {
         //02,04,13,25,28,29-16
 
-        //1.先判断购物车中是否已经包含了这注彩票 key:红球-蓝球 02,04,13,25,28,29 - 16
+        //1.先判断购物车中是否已经包含了这注彩票 key:hashcode(CartItem中重写了hashcode方法,hashcode根据球的号码生成)
         val itemHash = cartItem.hashCode()
         if (map.containsKey(itemHash)) {
             //2.若包含了,则取出对应的cartItem修改购买的数量
@@ -32,9 +32,9 @@ class Cart {
         }
     }
 
-    //2.删除指定的彩票的方法 02,04,13,25,28,29-16
-    fun remove(cartItem: CartItem) {
-        map.remove(cartItem.hashCode())
+    //2.删除指定的彩票的方法 cartItemHashCode
+    fun remove(cartHash: Int) {
+        map.remove(cartHash)
     }
 
     //3.清空的方法
@@ -43,19 +43,22 @@ class Cart {
     }
 
     //4.获取总金额的方法
-    fun getTotal(): Double {
-        var total = 0.0
-        //将map中所有cartItem取出来累加里面
-        for (key in map.keys) {
-            val cartItem = map[key]
-            total += cartItem?.subTotal!!
-        }
-        return total
+    fun getTotalPrice(): Double {
+        return (getTotalCount() * 2).toDouble()
     }
 
     //添加一个获取map中所有cartItem的方法
     fun getCartItems(): Collection<CartItem> {
         return map.values
     }
+
+    fun getTotalCount(): Int {
+        var numsCount = 0
+        getCartItems().forEachIndexed { _, cartItem ->
+            numsCount += cartItem.count
+        }
+        return numsCount
+    }
+
 
 }

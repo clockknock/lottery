@@ -27,12 +27,24 @@ class ConfigurationFilter {
     fun testFilterRegistration(): FilterRegistrationBean<*> {
         val registration = FilterRegistrationBean<LoginFilter>()
         registration.filter = LoginFilter()//添加过滤器
-        registration.addUrlPatterns("/user/myUI","/bbs/note/")//设置过滤路径，/*所有路径
+        registration.addUrlPatterns("/user/myUI","/bbs/note/","/cart/*")//设置过滤路径，/*所有路径
         registration.addInitParameter("name", "alue")//添加默认参数
-        registration.setName("MyFilter")//设置优先级
+        registration.setName("loginFilter")//设置优先级
         registration.order = 1//设置优先级
         return registration
     }
+
+    @Bean
+    fun cartFilterRegistration(): FilterRegistrationBean<*> {
+        val registration = FilterRegistrationBean<WebFilter>()
+        registration.filter = WebFilter()//添加过滤器
+        registration.addUrlPatterns("/cart/*")//设置过滤路径，/*所有路径
+//        registration.addInitParameter("name", "alue")//添加默认参数
+        registration.setName("cartFilter")//设置优先级
+        registration.order = 1//设置优先级
+        return registration
+    }
+
 
 
 }
