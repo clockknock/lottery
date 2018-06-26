@@ -22,10 +22,10 @@ class SmsUtil {
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
     //替换成你的ApiKey
     @Value("\${accessKeyId}")
-    private var accessKeyId: String? = null
+    private lateinit var accessKeyId: String
 
     @Value("\${accessKeySecret}")
-    private var accessKeySecret: String? = null
+    private lateinit var accessKeySecret: String
 
 
     /**

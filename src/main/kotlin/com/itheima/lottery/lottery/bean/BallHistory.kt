@@ -26,6 +26,7 @@ class BallHistory {
     /**
      * @Transient 不能直接给委托的属性,需要用@deltegate:Xxxxx
      * 数据库保存设计不合理,用list就好了
+     * this annotation is not applicable to target 'member property with delegate'
      */
     @delegate:Transient
     var reds: List<String>? by String2List

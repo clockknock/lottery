@@ -29,15 +29,10 @@ class UserController {
 
 
     @RequestMapping("/myUI")
-    fun myUI(session: HttpSession,model: Model): String {
-        val user: User? = session.getAttribute("user") as User?
-        return if (user == null) {
-            "login"
-        } else {
-            model.addAttribute("reds",BallUtil.randomRed())
-            model.addAttribute("blue",BallUtil.randomBlue())
-            "my"
-        }
+    fun myUI(session: HttpSession, model: Model): String {
+        model.addAttribute("reds", BallUtil.randomRed())
+        model.addAttribute("blue", BallUtil.randomBlue())
+        return "my"
     }
 
     @PostMapping("/")
@@ -67,7 +62,7 @@ class UserController {
 
     @RequestMapping("/sendSms")
     @ResponseBody
-    fun sendSms(mobile:String): String {
+    fun sendSms(mobile: String): String {
         try {
             smsUtil.sendSms(mobile)
         } catch (e: Exception) {

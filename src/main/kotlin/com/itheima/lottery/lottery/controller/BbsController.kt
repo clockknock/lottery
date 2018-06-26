@@ -28,19 +28,13 @@ class BbsController {
     }
 
     @PostMapping("/note/")
-    fun save(note: Note, request: HttpServletRequest,model:Model): String {
-        val user: User? = request.session.getAttribute("user") as User?
-        return if (user == null) {
-            model.addAttribute("msg","请先登录")
-            "redirect:/user/loginUI"
-        } else {
+    fun save(note: Note, request: HttpServletRequest, model: Model): String {
 
-            note.id = UUIDUtil.getId()
-            note.ip = request.remoteAddr
-            note.time=DateFormat.getDateInstance().format(Date())
-            noteService.save(note)
-            "redirect:/bbs/index"
-        }
+        note.id = UUIDUtil.getId()
+        note.ip = request.remoteAddr
+        note.time = DateFormat.getDateInstance().format(Date())
+        noteService.save(note)
+        return "redirect:/bbs/index"
 
     }
 
