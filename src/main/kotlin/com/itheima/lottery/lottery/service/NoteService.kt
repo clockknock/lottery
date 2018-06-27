@@ -9,5 +9,7 @@ import com.itheima.lottery.lottery.bean.Note
 interface NoteService{
     fun save(note: Note)
 
+    fun findById(id:String):Note
+
     fun findAll():List<Note>
 }

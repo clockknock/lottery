@@ -1,0 +1,89 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>帖子详情</title>
+    <meta charset="UTF-8"/>
+    <!-- content这个初始化缩放比例影响了移动设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 没rel="stylesheet" 居然没引用,学习了 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/lottery-basic.css">
+
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/lottery-jump.js"></script>
+
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row title">
+        <div class="col-xs-12">
+            <div style="position: absolute;" onclick="history.back()">&lt;返回</div>
+            帖子详情
+        </div>
+    </div>
+    <div style="margin-top: 55px;"></div>
+
+    <!--帖子列表-->
+    <div class="row">
+        <div class="col-xs-11">
+            <div class="row bbs-title">
+                <span th:text="${note.title}">小凯凯</span>
+
+            </div>
+            <div class="row bbs-content" th:text="${note.content}">
+                老衲昨晚夜观天象,这注彩票今天一定会中奖....
+            </div>
+            <div class="row">
+                <span style="font-size:14px;margin-left: 10px;" th:text="${note.username}">小凯凯
+                </span>
+                <span style="font-size:12px;margin-left:4px;" th:text="${note.time}">
+                    2018-01-06  21:20:20</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" style="background-color: #adadad;height: 4px;">
+        </div>
+    </div>
+
+    <div class="row" th:each="comment,stat:${note.comments}">
+        <div class="col-xs-11">
+            <!--帖子的评论内容-->
+            <div class="row" th:text="${comment.content}"
+                 style="line-height: 20px;margin-bottom: 15px;margin-top: 10px;word-break: break-all;">
+                这是评论
+            </div>
+
+            <div class="row pull-right">
+                <!--评论者的名字-->
+                <span style="font-size:14px" th:text="${comment.username}">小凯凯</span>
+                <!--评论的时间-->
+                <span style="font-size:12px;margin-left:4px" th:text="${comment.time}">2018-01-06
+                    21:20:20</span>
+                <span style="font-size:12px;margin-left:4px" th:text="|${stat.count}楼|">1楼</span>
+            </div>
+        </div>
+        <div class="col-xs-12" style="background-color: #f2dede;height: 2px;">
+        </div>
+    </div>
+
+
+    <div style="margin-bottom: 200px;"></div>
+
+    <div class="row" style="position: fixed;bottom: 0;width: 100%;">
+
+        <form action="/bbs/comment" method="post">
+            <!--帖子的编号-->
+            <input type="hidden" name="nid" th:value="${note.id}"/>
+            <!--输入框-->
+            <textarea class="form-control" style="height: 100px;" name="content"
+                      placeholder="请输入评论内容..."></textarea>
+            <!--确认发表的按钮-->
+            <button type="submit" class="form-control">发表</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

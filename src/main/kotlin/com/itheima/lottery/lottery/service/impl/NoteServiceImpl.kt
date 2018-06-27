@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service
  */
 @Service
 class NoteServiceImpl :NoteService {
+    override fun findById(id: String): Note {
+        return noteRepository.findById(id).get()
+    }
+
     override fun save(note: Note) {
         noteRepository.save(note)
     }

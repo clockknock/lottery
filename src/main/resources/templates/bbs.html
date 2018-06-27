@@ -1,9 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>论坛首页</title>
     <meta charset="UTF-8"/>
     <!-- content这个初始化缩放比例影响了移动设备 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>博彩首页</title>
     <!-- 没rel="stylesheet" 居然没引用,学习了 -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <link rel="stylesheet" href="/css/lottery-basic.css">
@@ -17,8 +17,8 @@
     <!-- 1.标题 -->
     <div class="row title">
         <div class="col-xs-12">
-            <div style="position: absolute;display: none;">&lt;返回</div>
-            博彩首页
+            <div style="position: absolute;" onclick="location='/'">&lt;返回</div>
+            论坛首页
         </div>
     </div>
     <div style="margin-top: 55px;"></div>
@@ -68,17 +68,22 @@
 
 
     <!-- 帖子列表 -->
-    <div class="row ball-div">
-        <div class="col-xs-11">
-            <div class="row">
-                <span style="font-size:14px">小凯凯</span>
-                <span style="font-size:12px;margin-left:4px">2018-01-06 21:20:20</span>
-            </div>
-            <div class="row" style="line-height: 20px;margin-bottom: 5px;
-            margin-top: 10px;word-break: break-all;">
-                我买的这注01,11,20,23,25,30...彩票,
+    <div class="row ball-div" th:each="note:${notes}">
+        <div th:onclick="|jumpPage('note/${note.id}')|">
+            <div class="col-xs-11 bbs-content">
+                <div class="row">
+                    <span style="font-size:14px" th:text="${note.username}">小凯凯</span>
+                    <span style="font-size:12px;margin-left:4px" th:text="${note.time}">
+                    2018-01-06   21:20:20
+                </span>
+                </div>
+                <div class="row" style="line-height: 20px;margin-bottom: 5px;
+            margin-top: 10px;word-break: break-all;" th:text="${note.title}">
+                    我买的这注01,11,20,23,25,30...彩票,
+                </div>
             </div>
         </div>
+
     </div>
     <!-- 帖子列表结束 -->
 

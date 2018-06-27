@@ -135,12 +135,29 @@
     text-align: center;
 }
 
-.payType{
+.payType {
     padding-right: 60px;
     padding-top: 16px;
     border-top: #2aabd2 1px solid;
 }
 
-.payType label{
+/*论坛*/
+.bbs-title {
+    line-height: 20px;
+    word-break: break-all;
+    margin-top: 20px;
+    padding-left: 30px;
+    margin-bottom: 16px;
+    color: #56c0e1;
+    font-size: 24px;
+}
+
+.bbs-content{
+    margin-left: 30px;
+    font-size: 18px;
+}
+
+.payType label {
     display: block;
 }
+
