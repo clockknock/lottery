@@ -142,7 +142,7 @@
 
     <!-- 5.底部菜单栏 -->
     <div style="margin-bottom: 62px;"></div>
-    <div class="lottery-bottom">
+    <div class="lottery-bottom" onclick="jumpPage('/order/submit')">
         <div class="col-xs-12 lottery-bottom-text"
              th:text="|立即付款 : ${session.cart.getTotalPrice()} 元|">
             立即付款 : 8元

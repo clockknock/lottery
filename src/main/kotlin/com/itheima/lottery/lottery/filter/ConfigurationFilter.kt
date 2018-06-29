@@ -27,7 +27,12 @@ class ConfigurationFilter {
     fun testFilterRegistration(): FilterRegistrationBean<*> {
         val registration = FilterRegistrationBean<LoginFilter>()
         registration.filter = LoginFilter()//添加过滤器
-        registration.addUrlPatterns("/user/myUI","/bbs/note/*","/bbs/comment","/cart/*")
+        registration.addUrlPatterns(
+                "/user/myUI",//用户模块
+                "/bbs/note/*","/bbs/comment",//论坛模块
+                "/cart/*",//购物车模块
+                "/order/*"//订单模块
+        )
         //设置过滤路径，/*所有路径
         registration.addInitParameter("name", "alue")//添加默认参数
         registration.setName("loginFilter")//设置优先级
