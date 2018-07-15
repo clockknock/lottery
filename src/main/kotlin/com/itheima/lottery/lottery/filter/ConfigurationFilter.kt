@@ -24,7 +24,7 @@ class ConfigurationFilter {
     }
 
     @Bean
-    fun testFilterRegistration(): FilterRegistrationBean<*> {
+    fun loginFilterRegistration(): FilterRegistrationBean<*> {
         val registration = FilterRegistrationBean<LoginFilter>()
         registration.filter = LoginFilter()//添加过滤器
         registration.addUrlPatterns(
